@@ -1,0 +1,338 @@
+/* Main container styling */
+.all-cars-page {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--background);
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+/* Container for all cars content */
+.all-cars-container {
+  width: 100%;
+  max-width: 1100px;
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+  padding: 32px 40px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* Header styling */
+.all-cars-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: var(--text);
+}
+
+.all-cars-header h2 {
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--primary);
+  margin: 0;
+  letter-spacing: -1px;
+}
+
+.vehicle-count {
+  font-size: 1.1rem;
+  color: var(--text-muted);
+  font-weight: 600;
+}
+
+/* Controls section */
+.all-cars-controls {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.search-input,
+.filter-select {
+  flex-grow: 1;
+  max-width: 400px;
+  padding: 10px 16px;
+  font-size: 1rem;
+  border: 2px solid var(--primary);
+  border-radius: 12px;
+  outline: none;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.search-input:focus,
+.filter-select:focus {
+  border-color: var(--primary-dark);
+  box-shadow: 0 0 8px rgba(244, 96, 74, 0.4);
+}
+
+.add-vehicle-btn {
+  background-color: var(--primary);
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  white-space: nowrap;
+}
+
+.add-vehicle-btn:hover {
+  background-color: var(--primary-dark);
+}
+
+/* Empty state styling */
+.all-cars-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 20px;
+  color: var(--primary);
+  font-size: 1.3rem;
+  font-weight: 600;
+  gap: 16px;
+}
+
+.empty-icon {
+  font-size: 5rem;
+}
+
+.empty-text {
+  text-align: center;
+}
+
+/* Grid layout for cars */
+.all-cars-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 24px;
+}
+
+/* Individual car card styling */
+.car-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 3px 12px rgba(0,0,0,0.06);
+  display: flex;
+  flex-direction: column;
+  transition: box-shadow 0.3s ease, transform 0.2s ease;
+}
+
+.car-card:hover {
+  box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+  transform: translateY(-3px);
+}
+
+.car-image-placeholder {
+  background-color: var(--border);
+  height: 180px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--text-muted);
+  font-size: 1.25rem;
+  user-select: none;
+}
+
+.car-details {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  flex-grow: 1;
+}
+
+.car-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.car-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--primary);
+  margin: 0;
+}
+
+.car-year {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  margin: 3px 0 0 0;
+}
+
+.car-status {
+  padding: 4px 10px;
+  border-radius: 9999px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  white-space: nowrap;
+  user-select: none;
+}
+
+.car-status.available {
+  background-color: rgba(16, 185, 129, 0.12);
+  color: var(--success);
+}
+
+.car-status.unavailable {
+  background-color: rgba(239, 68, 68, 0.12);
+  color: var(--danger);
+}
+
+/* Car attributes section */
+.car-attributes {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px 16px;
+  font-size: 0.9rem;
+  color: var(--text);
+}
+
+.car-attributes span {
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+.font-medium {
+  font-weight: 500;
+}
+
+/* Price styling */
+.car-price {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--text);
+  margin: 4px 0;
+}
+
+/* Button actions */
+.car-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: auto;
+}
+
+.edit-btn,
+.delete-btn {
+  flex: 1;
+  padding: 10px 0;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 1rem;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.edit-btn {
+  background-color: var(--background);
+  color: var(--text-muted);
+}
+
+.edit-btn:hover {
+  background-color: var(--border);
+}
+
+.delete-btn {
+  background-color: var(--danger-bg);
+  color: var(--danger);
+}
+
+.delete-btn:hover {
+  background-color: var(--danger-bg);
+}
+
+/* Availability toggle section */
+.availability-control {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid var(--background);
+  font-size: 0.95rem;
+  color: var(--text);
+}
+
+.toggle-btn {
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.toggle-btn.available {
+  background-color: var(--danger-bg);
+  color: var(--danger);
+}
+
+.toggle-btn.unavailable {
+  background-color: rgba(16, 185, 129, 0.12);
+  color: var(--success);
+}
+
+.toggle-btn:hover {
+  opacity: 0.9;
+  transform: scale(1.05);
+}
+
+/* Loading and error states */
+.loading-container,
+.error-container {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--primary);
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+/* Responsive styles */
+@media (max-width: 900px) {
+  .all-cars-container {
+    padding: 24px 28px;
+  }
+  
+  .car-attributes {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .all-cars-container {
+    padding: 20px 16px;
+  }
+  
+  .all-cars-header h2 {
+    font-size: 1.5rem;
+  }
+  
+  .vehicle-count {
+    font-size: 1rem;
+  }
+  
+  .all-cars-controls {
+    flex-direction: column;
+    gap: 12px;
+  }
+  
+  .search-input,
+  .filter-select,
+  .add-vehicle-btn {
+    max-width: 100%;
+  }
+}

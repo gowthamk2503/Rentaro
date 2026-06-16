@@ -1,0 +1,366 @@
+/* AdminLogin.css - Premium Glass Morphism Style for Admin Portal */
+
+:root {
+  --gold: var(--accent);
+  --gold-light: var(--highlight);
+  --dark: var(--text);
+  --light: rgba(255, 255, 255, 0.9);
+  --glass-light: rgba(255, 255, 255, 0.15);
+  --glass-border: rgba(255, 255, 255, 0.2);
+  --error: var(--danger);
+  --text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+
+/* Base & Background */
+.login-container {
+  font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  position: relative;
+  overflow: hidden;
+  background: url('/dark_car.png') center/cover no-repeat; /* Fallback background */
+}
+
+.video-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -2;
+}
+
+.video-background video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.6); /* Slightly darker for contrast */
+}
+
+.video-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.4) 100%);
+  z-index: -1;
+}
+
+/* Glass Card */
+.admin-login-card {
+  width: 100%;
+  max-width: 480px;
+  padding: 2.5rem;
+  margin: 1.5rem;
+  background: var(--glass-light);
+  backdrop-filter: blur(1px) saturate(150%);
+  -webkit-backdrop-filter: blur(16px) saturate(150%);
+  border-radius: 20px;
+  border: 1px solid var(--glass-border);
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.18),
+    inset 0 0 16px rgba(255, 255, 255, 0.1);
+  z-index: 10;
+  position: relative;
+  transition: all var(--transition);
+}
+
+.admin-login-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 
+    0 12px 40px rgba(0, 0, 0, 0.25),
+    inset 0 0 24px rgba(255, 255, 255, 0.15);
+}
+
+.admin-login-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 6px;
+  background: linear-gradient(90deg, var(--gold), var(--gold-light));
+}
+
+/* Header */
+.login-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.login-header h2 {
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: var(--light);
+  margin-bottom: 0.5rem;
+  text-shadow: var(--text-shadow);
+  position: relative;
+  display: inline-block;
+}
+
+.login-header h2::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--gold), var(--gold-light));
+  border-radius: 3px;
+}
+
+.login-header p {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.95rem;
+  margin-top: 1rem;
+  text-shadow: var(--text-shadow);
+}
+
+/* Form Elements */
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.input-group label {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--light);
+  text-shadow: var(--text-shadow);
+}
+
+.input-group input {
+  padding: 1rem 1.25rem;
+  background: rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 10px;
+  font-size: 1rem;
+  color: var(--light);
+  transition: all 0.3s ease;
+  backdrop-filter: blur(5px);
+}
+
+.input-group input::placeholder {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.input-group input:focus {
+  outline: none;
+  background: rgba(255, 255, 255, 0.3);
+  border: 1px solid var(--gold-light);
+  box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.3);
+}
+
+.input-group input:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+/* Error Message */
+.error-message {
+  padding: 0.75rem;
+  background: rgba(255, 107, 107, 0.15);
+  border-radius: 8px;
+  text-align: center;
+  font-size: 0.9rem;
+  color: var(--error);
+  text-shadow: none;
+}
+
+/* Security Notice */
+.security-notice {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.8);
+  margin: 1rem 0;
+}
+
+.security-notice svg {
+  width: 20px;
+  height: 20px;
+  stroke: var(--gold);
+}
+
+.security-notice span {
+  flex: 1;
+}
+
+/* Admin Login Button */
+.admin-login-button {
+  background: rgba(20, 20, 20, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  color: var(--gold-light);
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 0.8px;
+  padding: 12px 28px;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: all var(--transition);
+  margin: 1.5rem auto 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  box-shadow:
+    0 4px 20px rgba(0, 0, 0, 0.25),
+    inset 0 1px 1px rgba(255, 255, 255, 0.08);
+  overflow: hidden;
+  min-width: 200px;
+  text-transform: uppercase;
+}
+
+.admin-login-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(212, 175, 55, 0.15),
+    transparent
+  );
+  transition: 0.6s;
+}
+
+.admin-login-button:hover {
+  background: rgba(30, 30, 30, 0.8);
+  color: white;
+  border-color: rgba(212, 175, 55, 0.5);
+  transform: translateY(-2px);
+  box-shadow:
+    0 6px 25px rgba(0, 0, 0, 0.3),
+    inset 0 1px 2px rgba(255, 255, 255, 0.1);
+  text-shadow: 0 0 8px rgba(212, 175, 55, 0.4);
+}
+
+.admin-login-button:hover::before {
+  left: 100%;
+}
+
+.admin-login-button:active {
+  transform: translateY(0);
+  background: rgba(15, 15, 15, 0.7);
+}
+
+.admin-login-button:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.admin-login-button .spinner {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border: 3px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  border-top-color: var(--gold);
+  animation: spin 1s linear infinite;
+}
+
+/* Back Button */
+.back-to-main {
+  text-align: center;
+  margin-top: 1rem;
+}
+
+.back-button {
+  background: transparent;
+  border: none;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.back-button:hover {
+  color: var(--gold-light);
+  text-decoration: underline;
+}
+
+.back-button:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+/* Animation */
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .admin-login-card {
+    padding: 2rem;
+    margin: 1rem;
+    max-width: 400px;
+  }
+
+  .login-header h2 {
+    font-size: 1.8rem;
+  }
+
+  .admin-login-button {
+    padding: 11px 22px;
+    font-size: 0.85rem;
+    min-width: 180px;
+    letter-spacing: 0.6px;
+  }
+}
+
+@media (max-width: 480px) {
+  .admin-login-card {
+    padding: 1.5rem;
+    border-radius: 16px;
+  }
+
+  .login-header h2 {
+    font-size: 1.6rem;
+  }
+
+  .login-form {
+    gap: 1.25rem;
+  }
+
+  .input-group input {
+    padding: 0.9rem 1.1rem;
+  }
+
+  .admin-login-button {
+    padding: 10px 20px;
+    min-width: 160px;
+  }
+
+  .security-notice {
+    font-size: 0.8rem;
+    padding: 0.5rem;
+  }
+}

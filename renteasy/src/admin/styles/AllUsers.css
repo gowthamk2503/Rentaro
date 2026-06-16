@@ -1,0 +1,203 @@
+/* AllUsers.css - DRIVOXE Admin Users Centered Layout */
+
+.users-container {
+  min-height: 100vh;
+  background: var(--background);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px 3%;
+  box-sizing: border-box;
+}
+
+.users-content-wrapper {
+  background: var(--surface);
+  border-radius: 16px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+  max-width: 900px;
+  width: 100%;
+  padding: 32px 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  box-sizing: border-box;
+}
+
+.users-header {
+  text-align: center;
+}
+
+.users-header h2 {
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--primary);
+  margin-bottom: 8px;
+  letter-spacing: -1px;
+}
+
+.users-count {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+.users-controls {
+  display: flex;
+  justify-content: center;
+}
+
+.users-search input {
+  width: 100%;
+  max-width: 400px;
+  padding: 10px 16px;
+  font-size: 1rem;
+  border: 2px solid var(--primary);
+  border-radius: 12px;
+  outline: none;
+  transition: border-color 0.3s;
+}
+
+.users-search input:focus {
+  border-color: var(--primary-dark);
+  box-shadow: 0 0 8px rgba(244, 96, 74, 0.4);
+}
+
+.users-empty {
+  text-align: center;
+  color: var(--primary);
+  font-size: 1.2rem;
+  font-weight: 600;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  padding: 40px 20px;
+}
+
+.empty-icon {
+  font-size: 4rem;
+}
+
+.empty-text {
+  max-width: 320px;
+}
+
+.users-table-wrapper {
+  overflow-x: auto;
+}
+
+.users-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 1rem;
+  color: var(--text);
+  min-width: 600px;
+}
+
+.users-table thead {
+  background: var(--primary);
+  color: var(--surface);
+  text-align: left;
+}
+
+.users-table th,
+.users-table td {
+  padding: 14px 20px;
+  border-bottom: 1px solid var(--background);
+  vertical-align: middle;
+}
+
+.users-table tbody tr:hover {
+  background: var(--surface)6f4;
+  cursor: pointer;
+}
+
+.users-table tbody tr td:first-child {
+  font-weight: 600;
+  color: var(--primary);
+}
+
+.user-actions {
+  display: flex;
+  gap: 12px;
+}
+
+.user-action-btn {
+  background: transparent;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: transform 0.2s ease, color 0.2s ease;
+  padding: 4px 8px;
+  border-radius: 8px;
+}
+
+.user-action-btn.edit {
+  color: var(--success);
+}
+
+.user-action-btn.edit:hover {
+  color: var(--success);
+  transform: scale(1.1);
+  background: rgba(16, 185, 129, 0.12);
+}
+
+.user-action-btn.delete {
+  color: var(--danger);
+}
+
+.user-action-btn.delete:hover {
+  color: var(--danger);
+  transform: scale(1.1);
+  background: rgba(239, 68, 68, 0.12);
+}
+
+/* Loading & Error */
+.users-loading,
+.users-error {
+  font-size: 1.2rem;
+  color: var(--primary);
+  text-align: center;
+  padding: 40px 20px;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .users-content-wrapper {
+    padding: 24px 28px;
+  }
+  .users-table {
+    font-size: 0.95rem;
+    min-width: 100%;
+  }
+  .users-search input {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 600px) {
+  .users-content-wrapper {
+    padding: 20px 16px;
+  }
+  .users-header h2 {
+    font-size: 1.5rem;
+  }
+  .users-count {
+    font-size: 1rem;
+  }
+  .users-search input {
+    font-size: 0.9rem;
+    padding: 8px 12px;
+  }
+  .users-table thead {
+    font-size: 0.9rem;
+  }
+  .users-table th,
+  .users-table td {
+    padding: 10px 12px;
+  }
+  .user-action-btn {
+    font-size: 1rem;
+    padding: 3px 6px;
+  }
+}

@@ -1,0 +1,269 @@
+/* Enhanced BookingConfirmation.css */
+
+.booking-confirmation {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 2.5rem;
+  background-color: var(--background);
+  border-radius: 16px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  position: relative;
+  overflow: hidden;
+}
+
+.booking-confirmation::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 6px;
+  background: var(--accent-gradient);
+}
+
+.booking-confirmation h1 {
+  text-align: center;
+  color: var(--text);
+  margin-bottom: 2.5rem;
+  font-weight: 700;
+  border-bottom: 2px solid var(--accent);
+  padding-bottom: 1rem;
+  position: relative;
+}
+
+.booking-confirmation h1::after {
+  content: '✓';
+  position: absolute;
+  top: -15px;
+  right: 20px;
+  background-color: var(--success);
+  color: white;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.car-summary {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 2rem;
+  padding: 2rem;
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  transform: translateY(0);
+  transition: transform 0.3s ease;
+}
+
+.car-summary:hover {
+  transform: translateY(-5px);
+}
+
+.car-image {
+  width: 100%;
+  max-width: 400px;
+  height: auto;
+  border-radius: 10px;
+  margin-bottom: 1.5rem;
+  object-fit: cover;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.car-summary h2 {
+  margin: 0.5rem 0;
+  color: var(--text);
+  font-weight: 700;
+  font-size: 1.8rem;
+}
+
+.car-summary p {
+  font-size: 1.3rem;
+  color: var(--accent);
+  font-weight: 600;
+  margin-top: 0.5rem;
+}
+
+.customer-details, .status-section {
+  background-color: white;
+  padding: 1.8rem;
+  border-radius: 12px;
+  margin-bottom: 2rem;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  transition: box-shadow 0.3s ease;
+}
+
+.customer-details:hover, .status-section:hover {
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.customer-details h3, .status-section h3 {
+  color: var(--text);
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 0.8rem;
+  margin-bottom: 1.5rem;
+  font-weight: 600;
+  position: relative;
+}
+
+.customer-details h3::before, .status-section h3::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -1px;
+  width: 50px;
+  height: 3px;
+  background-color: var(--accent);
+}
+
+.customer-details p, .status-section p {
+  margin: 0.7rem 0;
+  font-size: 1.05rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+  display: flex;
+  align-items: baseline;
+}
+
+.customer-details p strong, .status-section p strong {
+  color: var(--text);
+  margin-right: 0.8rem;
+  min-width: 80px;
+  display: inline-block;
+}
+
+.status-section p:first-of-type {
+  font-weight: 600;
+  color: var(--success);
+  padding: 0.5rem;
+  background-color: rgba(46, 204, 113, 0.1);
+  border-radius: 4px;
+}
+
+.status-section p:last-of-type {
+  font-weight: 600;
+  color: var(--accent);
+  padding: 0.5rem;
+  background-color: rgba(52, 152, 219, 0.1);
+  border-radius: 4px;
+}
+
+.go-home-btn {
+  display: block;
+  width: 100%;
+  padding: 1.2rem;
+  background: linear-gradient(to right, var(--accent), var(--primary-dark));
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 1.5rem;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(52, 152, 219, 0.3);
+}
+
+.go-home-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.7s ease;
+}
+
+.go-home-btn:hover {
+  background: linear-gradient(to right, var(--primary-dark), var(--text));
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(52, 152, 219, 0.4);
+}
+
+.go-home-btn:hover::before {
+  left: 100%;
+}
+
+.go-home-btn:active {
+  transform: translateY(-1px);
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .booking-confirmation {
+    padding: 1.8rem;
+    margin: 1rem;
+    border-radius: 12px;
+  }
+  
+  .car-image {
+    max-width: 320px;
+  }
+  
+  .go-home-btn {
+    padding: 1rem;
+  }
+  
+  .car-summary h2 {
+    font-size: 1.5rem;
+  }
+  
+  .car-summary p {
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .booking-confirmation {
+    padding: 1.2rem;
+    border-radius: 10px;
+  }
+  
+  .booking-confirmation h1 {
+    font-size: 1.6rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .booking-confirmation h1::after {
+    right: 10px;
+    width: 25px;
+    height: 25px;
+    font-size: 0.8rem;
+  }
+  
+  .car-summary {
+    padding: 1.2rem;
+  }
+  
+  .car-summary h2 {
+    font-size: 1.3rem;
+  }
+  
+  .customer-details, .status-section {
+    padding: 1.2rem;
+  }
+  
+  .customer-details h3, .status-section h3 {
+    font-size: 1.2rem;
+  }
+  
+  .car-image {
+    max-width: 250px;
+  }
+  
+  .go-home-btn {
+    padding: 0.8rem;
+    font-size: 0.9rem;
+  }
+}

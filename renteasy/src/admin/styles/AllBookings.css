@@ -1,0 +1,133 @@
+/* AllBookings.css - DRIVOXE Admin Bookings */
+
+.all-bookings {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 32px 3%;
+  background: var(--background);
+  min-height: 100vh;
+}
+
+.all-bookings h1 {
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--primary);
+  margin-bottom: 28px;
+  text-align: center;
+  letter-spacing: -1px;
+}
+
+.booking-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 24px;
+}
+
+.booking-card {
+  background: var(--surface);
+  border-radius: 16px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+  padding: 22px 20px 18px 20px;
+  transition: transform 0.23s, box-shadow 0.23s;
+  border-left: 6px solid var(--primary);
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.booking-card:hover {
+  transform: translateY(-4px) scale(1.012);
+  box-shadow: 0 10px 28px rgba(0,0,0,0.13);
+  border-left-color: var(--primary-dark);
+  background: var(--surface)6f4;
+}
+
+.booking-card h3 {
+  font-size: 1.08rem;
+  font-weight: 700;
+  color: var(--primary);
+  margin-bottom: 5px;
+}
+
+.booking-card p {
+  font-size: 0.98rem;
+  color: var(--text);
+  margin-bottom: 2px;
+  line-height: 1.5;
+}
+
+.booking-card strong {
+  color: var(--text-muted);
+  font-weight: 600;
+}
+
+/* Status badge */
+.booking-card .status {
+  display: inline-block;
+  padding: 3px 14px;
+  border-radius: 12px;
+  font-size: 0.93em;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  background: var(--background);
+  color: var(--text-muted);
+  margin-left: 4px;
+  text-transform: capitalize;
+  transition: background 0.2s, color 0.2s;
+}
+.booking-card .status.Successful,
+.booking-card .status.success,
+.booking-card .status.completed {
+  background: rgba(16, 185, 129, 0.12);
+  color: var(--success);
+}
+.booking-card .status.Pending,
+.booking-card .status.pending {
+  background: var(--surface)be6;
+  color: var(--warning);
+}
+.booking-card .status.Cancelled,
+.booking-card .status.failed {
+  background: rgba(239, 68, 68, 0.12);
+  color: var(--danger);
+}
+
+/* Loading & Error */
+.all-bookings > div,
+.all-bookings > p {
+  text-align: center;
+  font-size: 1.1rem;
+  color: var(--primary);
+  margin-top: 40px;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .booking-list {
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 16px;
+  }
+  .booking-card {
+    padding: 14px 8px 12px 10px;
+  }
+}
+@media (max-width: 600px) {
+  .all-bookings {
+    padding: 14px 1%;
+  }
+  .all-bookings h1 {
+    font-size: 1.3rem;
+    margin-bottom: 16px;
+  }
+  .booking-list {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+  .booking-card h3 {
+    font-size: 1rem;
+  }
+  .booking-card p {
+    font-size: 0.9rem;
+  }
+}

@@ -1,0 +1,494 @@
+/* EditProfile.css - DRIVOXE Edit Profile Styling */
+
+/* Global Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Inter', 'Helvetica', sans-serif;
+}
+
+html, body {
+  height: 100%;
+  width: 100%;
+  overflow-y: auto;
+  scroll-behavior: smooth;
+}
+
+/* ================= Container ================= */
+.edit-profile-container {
+  background: linear-gradient(180deg, var(--background) 0%, var(--surface) 100%);
+  padding: 32px 3%;
+  min-height: 100vh;
+  width: 100%;
+  animation: slideInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.edit-profile-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at top right, rgba(244, 96, 74, 0.03) 0%, transparent 50%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ================= Header ================= */
+.edit-profile-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 36px;
+  position: relative;
+  z-index: 2;
+  animation: fadeInDown 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.2s both;
+}
+
+.edit-profile-header h1 {
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: var(--text);
+  letter-spacing: -1px;
+  position: relative;
+}
+
+.edit-profile-header h1::after {
+  content: '';
+  position: absolute;
+  bottom: -6px;
+  left: 0;
+  width: 60px;
+  height: 4px;
+  background: linear-gradient(90deg, var(--primary) 0%, var(--primary-dark) 100%);
+  border-radius: 2px;
+  animation: expandWidth 1s ease-out 0.8s both;
+}
+
+.back-button {
+  background: var(--surface);
+  color: var(--text-muted);
+  border: none;
+  padding: 10px 18px;
+  border-radius: 12px;
+  font-size: 0.92rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  text-transform: capitalize;
+}
+
+.back-button:hover {
+  background: rgba(244, 96, 74, 0.1);
+  color: var(--primary);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(244, 96, 74, 0.2);
+}
+
+.back-button:active {
+  transform: translateY(0);
+}
+
+/* ================= Form Container ================= */
+.edit-profile-form {
+  background: var(--surface);
+  border-radius: 16px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+  padding: 32px 28px;
+  position: relative;
+  z-index: 2;
+  border-left: 6px solid var(--primary);
+  transition: transform 0.3s, box-shadow 0.3s;
+  animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.4s both;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.edit-profile-form:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+  border-left-color: var(--primary-dark);
+}
+
+/* ================= Form Groups ================= */
+.form-group {
+  margin-bottom: 24px;
+  position: relative;
+  animation: fadeInLeft 0.6s ease-out calc(var(--delay, 0) * 0.1s) both;
+}
+
+.form-group:nth-child(1) { --delay: 1; }
+.form-group:nth-child(2) { --delay: 2; }
+.form-group:nth-child(3) { --delay: 3; }
+.form-group:nth-child(4) { --delay: 4; }
+.form-group:nth-child(5) { --delay: 5; }
+
+.form-group label {
+  display: block;
+  font-weight: 700;
+  color: var(--text);
+  font-size: 0.98rem;
+  margin-bottom: 8px;
+  letter-spacing: 0.025em;
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+.form-group label::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--primary) 0%, var(--primary-dark) 100%);
+  transition: width 0.3s ease;
+}
+
+.form-group:focus-within label::after {
+  width: 100%;
+}
+
+.form-group:focus-within label {
+  color: var(--primary);
+}
+
+/* ================= Input Fields ================= */
+.form-group input {
+  width: 100%;
+  padding: 14px 16px;
+  border: 2px solid var(--surface);
+  border-radius: 12px;
+  font-size: 0.98rem;
+  font-weight: 500;
+  color: var(--text);
+  background: var(--surface);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  outline: none;
+  letter-spacing: 0.3px;
+}
+
+.form-group input:focus {
+  border-color: var(--primary);
+  background: rgba(244, 96, 74, 0.02);
+  transform: scale(1.01);
+  box-shadow: 0 0 0 4px rgba(244, 96, 74, 0.1);
+}
+
+.form-group input:hover:not(:focus):not(.readonly) {
+  border-color: rgba(244, 96, 74, 0.3);
+  background: rgba(244, 96, 74, 0.01);
+}
+
+.form-group input.readonly {
+  background: var(--surface);
+  color: var(--text-muted);
+  cursor: not-allowed;
+  border-color: var(--border);
+}
+
+.form-group input.readonly:hover {
+  background: var(--surface);
+  border-color: var(--border);
+}
+
+.form-group input::placeholder {
+  color: var(--text-muted);
+  font-weight: 400;
+}
+
+/* ================= Form Actions ================= */
+.form-actions {
+  display: flex;
+  gap: 16px;
+  margin-top: 32px;
+  animation: fadeInUp 0.6s ease-out 0.8s both;
+}
+
+.save-button,
+.cancel-button {
+  flex: 1;
+  padding: 14px 24px;
+  border-radius: 12px;
+  font-size: 0.98rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border: none;
+  position: relative;
+  overflow: hidden;
+}
+
+.save-button {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+  color: white;
+  text-transform: uppercase;
+}
+
+.save-button:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(244, 96, 74, 0.3);
+  background: linear-gradient(135deg, var(--primary-dark) 0%, var(--danger) 100%);
+}
+
+.save-button:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.save-button:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+.save-button::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: width 0.3s, height 0.3s;
+}
+
+.save-button:hover:not(:disabled)::before {
+  width: 100%;
+  height: 100%;
+}
+
+.cancel-button {
+  background: var(--surface);
+  color: var(--text-muted);
+}
+
+.cancel-button:hover {
+  background: rgba(244, 96, 74, 0.1);
+  color: var(--primary);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(244, 96, 74, 0.15);
+}
+
+.cancel-button:active {
+  transform: translateY(0);
+}
+
+/* ================= Loading State ================= */
+.edit-profile-loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background: linear-gradient(180deg, var(--background) 0%, var(--surface) 100%);
+  gap: 20px;
+}
+
+.spinner {
+  width: 48px;
+  height: 48px;
+  border: 4px solid var(--surface);
+  border-top: 4px solid var(--primary);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+.edit-profile-loading p {
+  font-size: 1.1rem;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+/* ================= Responsive Design ================= */
+@media (max-width: 900px) {
+  .edit-profile-container {
+    padding: 24px 2.5%;
+  }
+  
+  .edit-profile-form {
+    padding: 24px 20px;
+  }
+  
+  .form-group {
+    margin-bottom: 20px;
+  }
+}
+
+@media (max-width: 600px) {
+  .edit-profile-container {
+    padding: 18px 2%;
+  }
+  
+  .edit-profile-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+  
+  .edit-profile-header h1 {
+    font-size: 1.6rem;
+  }
+  
+  .back-button {
+    align-self: flex-end;
+    padding: 8px 14px;
+    font-size: 0.9rem;
+  }
+  
+  .edit-profile-form {
+    padding: 20px 16px;
+    border-radius: 12px;
+  }
+  
+  .form-group {
+    margin-bottom: 18px;
+  }
+  
+  .form-group label {
+    font-size: 0.94rem;
+    margin-bottom: 6px;
+  }
+  
+  .form-group input {
+    padding: 12px 14px;
+    font-size: 0.94rem;
+  }
+  
+  .form-actions {
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 24px;
+  }
+  
+  .save-button,
+  .cancel-button {
+    padding: 12px 20px;
+    font-size: 0.94rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .edit-profile-container {
+    padding: 14px 1.5%;
+  }
+  
+  .edit-profile-header h1 {
+    font-size: 1.4rem;
+  }
+  
+  .edit-profile-form {
+    padding: 16px 12px;
+  }
+  
+  .form-group {
+    margin-bottom: 16px;
+  }
+  
+  .form-group input {
+    padding: 10px 12px;
+  }
+}
+
+/* ================= Animations ================= */
+@keyframes slideInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInDown {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes expandWidth {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 60px;
+  }
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* ================= Focus and Accessibility ================= */
+.form-group:focus-within {
+  position: relative;
+}
+
+.save-button:focus,
+.cancel-button:focus,
+.back-button:focus {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+
+/* ================= Print Styles ================= */
+@media print {
+  .edit-profile-container {
+    background: white;
+    padding: 20px;
+  }
+  
+  .edit-profile-header h1 {
+    color: black;
+  }
+  
+  .edit-profile-form {
+    box-shadow: none;
+    border: 1px solid var(--border);
+  }
+  
+  .form-actions {
+    display: none;
+  }
+}
