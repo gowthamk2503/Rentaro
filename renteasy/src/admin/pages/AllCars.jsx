@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import API from '../../api/API';
 import '../styles/AllCars.css';
 
 const AllCars = () => {
@@ -12,7 +13,7 @@ const AllCars = () => {
   useEffect(() => {
     const fetchCars = async () => {
       try {
-        const res = await axios.get('http://localhost:5000/api/cars');
+        const res = await API.get('/api/cars');
         setCars(res.data);
       } catch (err) {
         setError('Failed to fetch cars.');
@@ -30,7 +31,7 @@ const AllCars = () => {
     if (!window.confirm("Are you sure you want to delete this car?")) return;
 
     try {
-      await axios.delete(`http://localhost:5000/api/cars/${carId}`);
+      await API.delete(`/api/cars/${carId}`);
       setCars((prevCars) => prevCars.filter(car => car._id !== carId));
     } catch (error) {
       console.error('Failed to delete car:', error);
@@ -41,7 +42,7 @@ const AllCars = () => {
   // Toggle availability handler
   const toggleAvailability = async (carId, currentStatus) => {
     try {
-      const response = await axios.patch(`http://localhost:5000/api/cars/${carId}`, {
+      const response = await API.patch(`/api/cars/${carId}`, {
         available: !currentStatus
       });
 

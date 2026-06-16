@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import '../styles/AllBookings.css';
+import API from '../../api/API';
 
 const AllBookings = () => {
   const [bookings, setBookings] = useState([]);
@@ -12,14 +13,12 @@ const AllBookings = () => {
 
   const fetchAllBookings = async () => {
     try {
-      const res = await fetch('http://localhost:5000/api/bookings');
-      const data = await res.json();
+      const res = await API.get('/api/bookings');
+      const data = res.data;
 
-      if (!res.ok) throw new Error(data.message || "Failed to fetch bookings");
-
-      setBookings(data.bookings);
+      setBookings(data.bookings || data);
     } catch (err) {
-      setError(err.message);
+      setError(err.response?.data?.message || err.message || 'Failed to fetch bookings');
     } finally {
       setLoading(false);
     }
@@ -27,19 +26,11 @@ const AllBookings = () => {
 
   const updateBookingStatus = async (id) => {
     try {
-      const res = await fetch(`http://localhost:5000/api/bookings/${id}`, {
-        method: 'PUT',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      });
-
-      const data = await res.json();
-      if (!res.ok) throw new Error(data.message || "Failed to update");
-
+      const res = await API.put(`/api/bookings/${id}`);
+      const data = res.data;
       // Update local state to reflect change
       setBookings((prev) =>
-        prev.map((b) => (b._id === id ? { ...b, status: "Successful" } : b))
+        prev.map((b) => (b._id === id ? { ...b, status: data.status || 'Successful' } : b))
       );
 
       alert("Booking status updated to 'Successful'");

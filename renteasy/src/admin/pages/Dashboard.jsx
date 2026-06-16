@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import API from '../../api/API';
 import {
   BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, PieChart, Pie, Cell, Legend
 } from "recharts";
@@ -100,9 +101,9 @@ const Dashboard = () => {
       setLoading(true);
       try {
         const [bookingsRes, carsRes, usersRes] = await Promise.all([
-          axios.get("http://localhost:5000/api/bookings"),
-          axios.get("http://localhost:5000/api/cars"),
-          axios.get("http://localhost:5000/api/users"),
+          API.get('/api/bookings'),
+          API.get('/api/cars'),
+          API.get('/api/users'),
         ]);
 
         // Bookings

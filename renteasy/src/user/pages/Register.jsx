@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useAuth } from '../contexts/AuthContext';
 import { useNavigate, Link } from 'react-router-dom';
 import axios from 'axios'; // Import axios
+import API from '../../api/API';
 import '../styles/Register.css';
 
 export default function Register() {
@@ -41,7 +42,7 @@ export default function Register() {
     if (validateForm()) {
       try {
         setLoading(true); // Start loading
-        const response = await axios.post('http://localhost:5000/api/users/register', formData); // Send form data to backend
+        const response = await API.post('/api/users/register', formData); // Send form data to backend
         if (response.data.success) {
           login();
           navigate('/');

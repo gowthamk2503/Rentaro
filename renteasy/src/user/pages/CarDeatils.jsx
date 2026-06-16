@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import API from '../../api/API';
 import '../styles/CarDetails.css';
 const cars = [
   {
@@ -341,7 +342,7 @@ const CarDetails = () => {
       const rentalDays = Math.max(1, Math.ceil((drop - pickup) / (1000 * 60 * 60 * 24)));
       const totalCost = rentalDays * car.price;
 
-      const response = await axios.post('http://localhost:5000/api/bookings/', {
+      const response = await API.post('/api/bookings/', {
         userId,
         name: bookingForm.name,
         email: bookingForm.email,

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate, useLocation } from 'react-router-dom';
 import '../styles/BookingConfirmation.css';
+import API from '../../api/API';
 
 const BookingConfirmation = () => {
   const { bookingId } = useParams();
@@ -16,12 +17,11 @@ const BookingConfirmation = () => {
   useEffect(() => {
     const fetchBooking = async () => {
       try {
-        const res = await fetch(`http://localhost:5000/api/bookings/${bookingId}`);
-        const data = await res.json();
-        if (!res.ok) throw new Error(data.message || "Error fetching booking");
-        setBooking(data.booking);
+        const res = await API.get(`/api/bookings/${bookingId}`);
+        const data = res.data;
+        setBooking(data.booking || data);
       } catch (err) {
-        setError(err.message);
+        setError(err.response?.data?.message || err.message || 'Error fetching booking');
       } finally {
         setLoading(false);
       }

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import API from '../../api/API';
 import '../styles/AllUsers.css';
 
 const AllUsers = () => {
@@ -13,7 +14,7 @@ const AllUsers = () => {
       setLoading(true);
       setError(null);
       try {
-        const res = await axios.get('http://localhost:5000/api/users');
+        const res = await API.get('/api/users');
 
         console.log('Fetched users:', res.data);
 

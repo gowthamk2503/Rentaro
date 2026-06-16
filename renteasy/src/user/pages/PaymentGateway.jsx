@@ -1,6 +1,7 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import './PaymentGateway.css';
+import API from '../../api/API';
 
 const UPI_ID = 'carrental@upi';
 const BUSINESS_NAME = 'Car Rental Service';
@@ -41,13 +42,17 @@ export default function PaymentGateway() {
 
   useEffect(() => {
     if (!booking && bookingId) {
-      fetch(`http://localhost:5000/api/bookings/${bookingId}`)
-        .then((res) => res.json())
-        .then((data) => {
+      const loadBooking = async () => {
+        try {
+          const res = await API.get(`/api/bookings/${bookingId}`);
+          const data = res.data;
           if (data.booking) setBooking(data.booking);
           else setError(data.message || 'Booking not found');
-        })
-        .catch((err) => setError(err.message || 'Failed to fetch booking'));
+        } catch (err) {
+          setError(err.message || 'Failed to fetch booking');
+        }
+      };
+      loadBooking();
     }
   }, [bookingId, booking]);
 
@@ -126,20 +131,16 @@ export default function PaymentGateway() {
     };
 
     try {
-      const res = await fetch('http://localhost:5000/api/payments', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload)
-      });
-      const data = await res.json();
-      if (!res.ok) throw new Error(data.message || 'Payment submission failed');
+      const res = await API.post('/api/payments', payload);
+      const data = res.data;
       setSuccessMessage('Payment submitted successfully. Verification will be completed by admin.');
       setTimeout(() => setSuccessMessage(''), 5000);
       if (data.payment) {
         navigate(`/booking/${booking._id}`, { state: { paymentMessage: data.message } });
       }
     } catch (err) {
-      setError(err.message || 'Payment submission failed');
+      setError(err.response?.data?.message || err.message || 'Payment submission failed');
+      console.error(err);
     } finally {
       setLoading(false);
     }

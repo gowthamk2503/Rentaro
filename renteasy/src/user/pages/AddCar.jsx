@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import API from '../../api/API';
 import '../styles/AddCar.css';
 
 const AddCar = () => {
@@ -19,7 +20,7 @@ const AddCar = () => {
       setLoadingCars(true);
       setErrorCars(null);
       try {
-        const res = await axios.get('http://localhost:5000/api/cars');
+        const res = await API.get('/api/cars');
         setCars(res.data);
       } catch (err) {
         setErrorCars('Failed to load cars.');
@@ -42,7 +43,7 @@ const AddCar = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:5000/api/cars/add', {
+      const response = await API.post('/api/cars/add', {
         ...carDetails,
         available: true
       });

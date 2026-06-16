@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import '../styles/Profile.css';
+import API from '../../api/API';
 
 const DEFAULT_AVATAR = '/gowtham_ava.jpg';
 
@@ -52,20 +53,24 @@ const Profile = () => {
       setBookingError('');
       return;
     }
-    setLoadingBookings(true);
-    setBookingError('');
-    fetch(`http://localhost:5000/api/bookings/email/${userEmail}`)
-      .then(res => res.json())
-      .then(data => {
-        if (!Array.isArray(data.bookings)) throw new Error('Invalid bookings data');
-        setBookingCount(data.bookings.length);
-        setLoadingBookings(false);
-      })
-      .catch(() => {
+    const load = async () => {
+      setLoadingBookings(true);
+      setBookingError('');
+      try {
+        const res = await API.get(`/api/bookings/email/${userEmail}`);
+        const data = res.data;
+        const bookings = data.bookings || data;
+        if (!Array.isArray(bookings)) throw new Error('Invalid bookings data');
+        setBookingCount(bookings.length);
+      } catch (err) {
         setBookingCount(0);
         setBookingError('Could not fetch bookings');
+        console.error(err);
+      } finally {
         setLoadingBookings(false);
-      });
+      }
+    };
+    load();
   }, [userEmail]);
 
   if (!userEmail) {

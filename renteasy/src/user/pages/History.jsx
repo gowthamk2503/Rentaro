@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import '../styles/History.css';
+import API from '../../api/API';
 
 const History = () => {
   const [bookings, setBookings] = useState([]);
@@ -20,14 +21,12 @@ const History = () => {
     }
 
     try {
-      const res = await fetch(`http://localhost:5000/api/bookings/email/${userEmail}`);
-      const data = await res.json();
-
-      if (!res.ok) throw new Error(data.message || 'Failed to fetch bookings');
-
-      setBookings(data.bookings);
+      const res = await API.get(`/api/bookings/email/${userEmail}`);
+      const data = res.data;
+      const bookingsData = data.bookings || data;
+      setBookings(bookingsData);
     } catch (err) {
-      setError(err.message);
+      setError(err.response?.data?.message || err.message || 'Failed to fetch bookings');
     } finally {
       setLoading(false);
     }
