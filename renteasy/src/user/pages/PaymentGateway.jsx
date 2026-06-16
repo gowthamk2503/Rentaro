@@ -28,7 +28,6 @@ export default function PaymentGateway() {
   const [booking, setBooking] = useState(bookingState || null);
   const [paymentMethod, setPaymentMethod] = useState('UPI');
   const [transactionId, setTransactionId] = useState('');
-  const [paymentDate, setPaymentDate] = useState(new Date().toISOString().slice(0, 10));
   const [screenshotBase64, setScreenshotBase64] = useState('');
   const [screenshotPreview, setScreenshotPreview] = useState(null);
   const [countdown, setCountdown] = useState(15 * 60);
@@ -103,8 +102,8 @@ export default function PaymentGateway() {
       await navigator.clipboard.writeText(UPI_ID);
       setSuccessMessage('UPI ID copied to clipboard');
       setTimeout(() => setSuccessMessage(''), 2500);
-    } catch (err) {
-      setError('Unable to copy UPI ID');
+    } catch  {
+      setError('Failed to copy UPI ID');
     }
   };
 
@@ -174,8 +173,8 @@ export default function PaymentGateway() {
             {booking ? (
               <div className="booking-summary-list">
                 <div className="summary-image">
-                  <img src={booking.carImage || '/images/default_car.jpg'} alt={booking.carName} />
-                </div>
+  <img src={booking.carImage || '/images/default_car.jpg'} alt={booking.carName} />
+</div>
                 <div className="summary-details">
                   {bookingSummary.map((item) => (
                     <div key={item.label} className="summary-row">
