@@ -1,0 +1,347 @@
+/* Global Animated Background Container */
+.rentaro-global-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+  background: var(--page-background);
+}
+
+/* ==================================================
+   1. GLOBAL BACKGROUND VIDEO: landding_bg
+   ================================================== */
+.global-landding-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.32;
+  z-index: 0;
+  pointer-events: none;
+  filter: saturate(1.1) brightness(1.05);
+}
+
+/* Semi-Transparent Light Glass Overlay */
+.global-video-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    180deg,
+    rgba(247, 248, 252, 0.72) 0%,
+    rgba(247, 248, 252, 0.84) 50%,
+    rgba(247, 248, 252, 0.92) 100%
+  );
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* ==================================================
+   2. FLOATING BACKGROUND BLOBS
+   ================================================== */
+.bg-blob {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  will-change: transform;
+  filter: blur(70px);
+  -webkit-filter: blur(70px);
+  opacity: 0.65;
+  z-index: 2;
+  transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* Blob 1: Top Left Soft Coral */
+.blob-coral-1 {
+  width: 520px;
+  height: 520px;
+  top: -120px;
+  left: -100px;
+  background: radial-gradient(circle, var(--soft-pink) 0%, rgba(249, 221, 225, 0.4) 60%, transparent 80%);
+  animation: blobFloatSlow 22s ease-in-out infinite alternate;
+}
+
+/* Blob 2: Top Right Soft Ice Blue */
+.blob-blue-1 {
+  width: 560px;
+  height: 560px;
+  top: -80px;
+  right: -120px;
+  background: radial-gradient(circle, var(--soft-blue) 0%, rgba(238, 243, 250, 0.6) 60%, transparent 80%);
+  animation: blobDriftHorizontal 26s ease-in-out infinite alternate;
+}
+
+/* Blob 3: Center Left Subtle Warm Pink */
+.blob-coral-2 {
+  width: 460px;
+  height: 460px;
+  top: 45%;
+  left: -80px;
+  background: radial-gradient(circle, rgba(249, 221, 225, 0.8) 0%, rgba(232, 93, 106, 0.08) 50%, transparent 75%);
+  animation: blobDriftDiagonal 28s ease-in-out infinite alternate;
+}
+
+/* Blob 4: Bottom Right Ice Blue */
+.blob-blue-2 {
+  width: 600px;
+  height: 600px;
+  bottom: -150px;
+  right: -100px;
+  background: radial-gradient(circle, var(--soft-blue) 0%, rgba(219, 234, 254, 0.5) 60%, transparent 80%);
+  animation: blobFloatSlow 24s ease-in-out infinite alternate-reverse;
+}
+
+/* Blob 5: Center Bottom Soft Ambient */
+.blob-amber-soft {
+  width: 420px;
+  height: 420px;
+  bottom: 10%;
+  left: 35%;
+  background: radial-gradient(circle, rgba(254, 243, 199, 0.5) 0%, rgba(249, 221, 225, 0.3) 50%, transparent 75%);
+  animation: blobPulseScale 20s ease-in-out infinite alternate;
+}
+
+/* GPU-Accelerated Blob Keyframes */
+@keyframes blobFloatSlow {
+  0% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(25px, 45px, 0) scale(1.06);
+  }
+  100% {
+    transform: translate3d(-20px, 80px, 0) scale(0.96);
+  }
+}
+
+@keyframes blobDriftHorizontal {
+  0% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(-60px, 30px, 0) scale(1.08);
+  }
+  100% {
+    transform: translate3d(-30px, -40px, 0) scale(0.94);
+  }
+}
+
+@keyframes blobDriftDiagonal {
+  0% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(40px, -50px, 0) scale(1.05);
+  }
+  100% {
+    transform: translate3d(70px, 30px, 0) scale(0.98);
+  }
+}
+
+@keyframes blobPulseScale {
+  0% {
+    transform: translate3d(0, 0, 0) scale(0.92);
+    opacity: 0.5;
+  }
+  50% {
+    transform: translate3d(-30px, -20px, 0) scale(1.12);
+    opacity: 0.8;
+  }
+  100% {
+    transform: translate3d(20px, 30px, 0) scale(1);
+    opacity: 0.6;
+  }
+}
+
+/* ==================================================
+   3. AUTOMOTIVE THEME: ROAD CURVES & LIGHT STREAKS
+   ================================================== */
+.bg-automotive-svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.55;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.road-line-anim {
+  stroke-dasharray: 20 280;
+  stroke-linecap: round;
+  fill: none;
+  animation: roadLineFlow 18s linear infinite;
+}
+
+.line-primary {
+  stroke: rgba(232, 93, 106, 0.16);
+  stroke-width: 2.5;
+  animation-duration: 20s;
+}
+
+.line-secondary {
+  stroke: rgba(59, 130, 246, 0.14);
+  stroke-width: 2;
+  animation-duration: 24s;
+  animation-delay: -5s;
+}
+
+.line-tertiary {
+  stroke: rgba(117, 175, 139, 0.14);
+  stroke-width: 1.5;
+  animation-duration: 28s;
+  animation-delay: -10s;
+}
+
+@keyframes roadLineFlow {
+  0% {
+    stroke-dashoffset: 0;
+  }
+  100% {
+    stroke-dashoffset: -1200;
+  }
+}
+
+/* ==================================================
+   4. AERODYNAMIC RINGS & TURBO CONCENTRIC ACCENTS
+   ================================================== */
+.bg-aero-ring {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+  will-change: transform;
+  z-index: 2;
+}
+
+.ring-top-right {
+  top: 15%;
+  right: 8%;
+  width: 260px;
+  height: 260px;
+}
+
+.ring-bottom-left {
+  bottom: 20%;
+  left: 6%;
+  width: 320px;
+  height: 320px;
+}
+
+.ring-inner-pulse {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  border: 1px dashed rgba(232, 93, 106, 0.15);
+  animation: ringRotate 40s linear infinite;
+  box-shadow: inset 0 0 40px rgba(249, 221, 225, 0.2);
+}
+
+.pulse-delay {
+  border: 1px dashed rgba(59, 130, 246, 0.12);
+  animation-duration: 50s;
+  animation-direction: reverse;
+}
+
+@keyframes ringRotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* ==================================================
+   5. FLOATING PARTICLES (10–20 Lightweight)
+   ================================================== */
+.bg-particles-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.floating-particle {
+  position: absolute;
+  bottom: -20px;
+  background: radial-gradient(circle, rgba(232, 93, 106, 0.7) 0%, rgba(249, 221, 225, 0.2) 70%, transparent 100%);
+  border-radius: 50%;
+  pointer-events: none;
+  animation: particleFloatUp ease-in infinite;
+  will-change: transform, opacity;
+}
+
+.floating-particle:nth-child(even) {
+  background: radial-gradient(circle, rgba(59, 130, 246, 0.6) 0%, rgba(219, 234, 254, 0.2) 70%, transparent 100%);
+}
+
+@keyframes particleFloatUp {
+  0% {
+    transform: translate3d(0, 0, 0) scale(0.6);
+    opacity: 0;
+  }
+  15% {
+    opacity: 0.6;
+  }
+  75% {
+    opacity: 0.4;
+  }
+  100% {
+    transform: translate3d(15px, -105vh, 0) scale(1.2);
+    opacity: 0;
+  }
+}
+
+/* ==================================================
+   6. ACCESSIBILITY: REDUCED MOTION
+   ================================================== */
+@media (prefers-reduced-motion: reduce) {
+  .global-landding-video,
+  .bg-blob,
+  .road-line-anim,
+  .ring-inner-pulse,
+  .floating-particle {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+/* ==================================================
+   7. MOBILE OPTIMIZATION
+   ================================================== */
+@media (max-width: 768px) {
+  .bg-blob {
+    filter: blur(50px);
+    -webkit-filter: blur(50px);
+    opacity: 0.5;
+  }
+  .blob-coral-1, .blob-blue-1 {
+    width: 320px;
+    height: 320px;
+  }
+  .blob-coral-2, .blob-blue-2, .blob-amber-soft {
+    display: none;
+  }
+  .bg-aero-ring {
+    display: none;
+  }
+  .bg-particles-container {
+    opacity: 0.35;
+  }
+}

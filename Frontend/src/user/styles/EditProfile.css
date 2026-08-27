@@ -1,0 +1,142 @@
+.edit-profile-page-wrapper {
+  padding-top: calc(var(--nav-height) + 2rem);
+  padding-bottom: 5rem;
+  min-height: 100vh;
+}
+
+.edit-profile-container {
+  max-width: 680px;
+  margin: 0 auto;
+}
+
+.edit-profile-top-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.edit-page-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--primary-text);
+}
+
+.edit-form-card {
+  padding: 2.5rem;
+  border-radius: var(--radius-lg);
+}
+
+.edit-profile-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.avatar-picker-section {
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.avatar-preview-row {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  margin-bottom: 0.85rem;
+}
+
+.avatar-preview-img {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--border);
+  box-shadow: var(--shadow-sm);
+}
+
+.avatar-presets-col {
+  flex: 1;
+}
+
+.preset-avatars-row {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.preset-thumb-btn {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 2px solid var(--border);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  padding: 0;
+}
+
+.preset-thumb-btn img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.preset-thumb-btn.active {
+  border-color: var(--accent-red);
+  box-shadow: 0 0 0 2px rgba(232, 93, 106, 0.3);
+}
+
+.input-readonly {
+  background: var(--soft-blue) !important;
+  color: var(--secondary-text) !important;
+  cursor: not-allowed;
+}
+
+.edit-actions-row {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 1rem;
+  margin-top: 1rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border);
+}
+
+.edit-alert-success {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: #EAF6EF;
+  border: 1px solid rgba(117, 175, 139, 0.4);
+  color: #2D7A4D;
+  padding: 0.85rem 1rem;
+  border-radius: var(--radius-md);
+  margin-bottom: 1.5rem;
+  font-size: 0.9rem;
+}
+
+.edit-alert-error {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: #FFF1F2;
+  border: 1px solid rgba(232, 93, 106, 0.3);
+  color: var(--accent-red);
+  padding: 0.85rem 1rem;
+  border-radius: var(--radius-md);
+  margin-bottom: 1.5rem;
+  font-size: 0.9rem;
+}
+
+.text-xs {
+  font-size: 0.78rem;
+}
+
+.block {
+  display: block;
+}
+
+.mt-2 {
+  margin-top: 0.5rem;
+}

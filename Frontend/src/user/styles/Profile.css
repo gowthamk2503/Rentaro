@@ -1,0 +1,203 @@
+.profile-page-wrapper {
+  padding-top: calc(var(--nav-height) + 2rem);
+  padding-bottom: 5rem;
+  min-height: 100vh;
+}
+
+.profile-content-container {
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+/* Top Hero Banner */
+.profile-hero-card {
+  padding: 2.5rem;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  margin-bottom: 2rem;
+  position: relative;
+  flex-wrap: wrap;
+}
+
+.profile-avatar-wrap {
+  position: relative;
+}
+
+.profile-avatar-large {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #FFFFFF;
+  box-shadow: var(--shadow-md);
+}
+
+.online-indicator {
+  position: absolute;
+  bottom: 4px;
+  right: 4px;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #2D7A4D;
+  border: 3px solid #FFFFFF;
+}
+
+.profile-header-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.profile-name-role {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.profile-user-name {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--primary-text);
+}
+
+.profile-user-email {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.92rem;
+  color: var(--secondary-text);
+}
+
+.profile-joined-text {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.82rem;
+  color: var(--secondary-text);
+}
+
+.edit-profile-btn {
+  padding: 0.65rem 1.35rem;
+}
+
+/* Metrics & Info Split */
+.profile-grid-layout {
+  display: grid;
+  grid-template-columns: 1.25fr 1fr;
+  gap: 2rem;
+  align-items: flex-start;
+}
+
+.profile-details-card, .profile-stats-card {
+  padding: 2.25rem 2rem;
+}
+
+.card-section-title {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--primary-text);
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.85rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.profile-info-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.85rem 0;
+  border-bottom: 1px solid var(--border);
+  font-size: 0.92rem;
+}
+
+.profile-info-row:last-child {
+  border-bottom: none;
+}
+
+.profile-info-label {
+  color: var(--secondary-text);
+  font-weight: 500;
+}
+
+.profile-info-value {
+  color: var(--primary-text);
+  font-weight: 600;
+}
+
+/* Right Stats Card */
+.profile-stat-box {
+  background: var(--soft-blue);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 1.5rem;
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.stat-big-num {
+  font-size: 2.6rem;
+  font-weight: 700;
+  color: var(--accent-red);
+  display: block;
+  line-height: 1;
+}
+
+.stat-sub-label {
+  font-size: 0.82rem;
+  color: var(--secondary-text);
+  margin-top: 0.35rem;
+  display: block;
+}
+
+.account-safety-badge {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.85rem;
+  background: #EAF6EF;
+  border: 1px solid rgba(117, 175, 139, 0.4);
+  border-radius: var(--radius-md);
+  padding: 1.25rem;
+  margin-bottom: 1.75rem;
+}
+
+.safety-title {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #2D7A4D;
+  margin-bottom: 0.2rem;
+}
+
+.safety-desc {
+  font-size: 0.78rem;
+  color: #2D7A4D;
+  line-height: 1.5;
+}
+
+.profile-actions-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+@media (max-width: 860px) {
+  .profile-grid-layout {
+    grid-template-columns: 1fr;
+  }
+  .profile-hero-card {
+    flex-direction: column;
+    text-align: center;
+  }
+  .profile-header-info {
+    align-items: center;
+  }
+  .profile-name-role {
+    justify-content: center;
+  }
+}

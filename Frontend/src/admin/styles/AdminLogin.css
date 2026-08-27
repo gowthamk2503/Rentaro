@@ -1,0 +1,114 @@
+.admin-auth-page-wrapper {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--page-background);
+  padding: 2rem 1.5rem;
+  overflow: hidden;
+}
+
+.admin-auth-card {
+  max-width: 480px;
+  width: 100%;
+  padding: 3rem 2.5rem;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  position: relative;
+  z-index: 1;
+}
+
+.admin-header-badge {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.admin-shield-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--soft-pink);
+  color: var(--accent-red);
+  font-size: 1.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1rem;
+}
+
+.admin-title {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--primary-text);
+  margin-top: 0.5rem;
+  margin-bottom: 0.35rem;
+}
+
+.admin-subtitle {
+  font-size: 0.88rem;
+  color: var(--secondary-text);
+  line-height: 1.5;
+}
+
+.admin-error-box {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: #FFF1F2;
+  border: 1px solid rgba(232, 93, 106, 0.3);
+  color: var(--accent-red);
+  padding: 0.75rem 1rem;
+  border-radius: var(--radius-md);
+  font-size: 0.85rem;
+  margin-bottom: 1.5rem;
+}
+
+.admin-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.admin-submit-btn {
+  padding: 0.95rem;
+  font-size: 1rem;
+  margin-top: 0.5rem;
+}
+
+.admin-demo-creds {
+  margin-top: 1.75rem;
+  padding: 1rem 1.25rem;
+  background: var(--soft-blue);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  text-align: center;
+}
+
+.demo-creds-title {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--secondary-text);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.35rem;
+}
+
+.demo-creds-body {
+  font-size: 0.82rem;
+  color: var(--primary-text);
+}
+
+.demo-creds-body code {
+  background: #FFFFFF;
+  padding: 0.15rem 0.4rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+  font-family: var(--font-heading);
+  color: var(--accent-red);
+}
+
+.admin-footer-back {
+  margin-top: 1.75rem;
+  text-align: center;
+}

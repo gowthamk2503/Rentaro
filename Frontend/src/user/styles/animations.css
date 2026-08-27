@@ -1,0 +1,154 @@
+/* ==================================================
+   RENTARO GLOBAL INTERACTIVE ANIMATION SYSTEM
+   ================================================== */
+
+/* 1. Page Entrance Transition */
+@keyframes pageFadeSlideIn {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 12px, 0);
+  }
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.page-wrapper, 
+.admin-viewport-content {
+  animation: pageFadeSlideIn 0.38s cubic-bezier(0.16, 1, 0.3, 1) backwards;
+  position: relative;
+  z-index: 1;
+}
+
+/* 2. Global Card Hover Float Effects */
+.card-light,
+.glass-card,
+.glass-panel,
+.vehicle-showcase-card,
+.car-card,
+.step-item-card,
+.testimonial-card,
+.category-card,
+.booking-item-card,
+.spec-matrix-card,
+.kpi-stat-card,
+.dashboard-chart-card,
+.dashboard-table-card,
+.fleet-table-card,
+.admin-users-table-card,
+.pricing-settings-card,
+.media-selector-card {
+  transition: transform 0.28s cubic-bezier(0.4, 0, 0.2, 1), 
+              box-shadow 0.28s cubic-bezier(0.4, 0, 0.2, 1),
+              border-color 0.25s ease;
+}
+
+/* Float hover on interactive cards */
+.category-card:hover,
+.vehicle-showcase-card:hover,
+.car-card:hover,
+.step-item-card:hover,
+.testimonial-card:hover,
+.booking-item-card:hover,
+.kpi-stat-card:hover {
+  transform: translate3d(0, -4px, 0);
+  box-shadow: 0 14px 32px rgba(37, 37, 43, 0.08);
+}
+
+/* 3. Button Micro-Interactions */
+.btn {
+  transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1), 
+              box-shadow 0.25s cubic-bezier(0.4, 0, 0.2, 1),
+              background-color 0.25s ease,
+              border-color 0.25s ease !important;
+  will-change: transform;
+}
+
+.btn:hover:not(:disabled) {
+  transform: translate3d(0, -2px, 0);
+}
+
+.btn:active:not(:disabled) {
+  transform: translate3d(0, 0, 0) scale(0.98);
+}
+
+/* 4. Car Card Image Subtle Zoom */
+.vehicle-showcase-card .vehicle-img,
+.car-card .car-photo,
+.receipt-car-card .receipt-car-photo {
+  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: transform;
+}
+
+.vehicle-showcase-card:hover .vehicle-img,
+.car-card:hover .car-photo {
+  transform: scale(1.04);
+}
+
+/* 5. Dashboard Staggered Sequential Entrance */
+@keyframes dashboardCardIn {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 14px, 0);
+  }
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.dashboard-stats-grid .kpi-stat-card {
+  animation: dashboardCardIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) backwards;
+}
+
+.dashboard-stats-grid .kpi-stat-card:nth-child(1) { animation-delay: 0.05s; }
+.dashboard-stats-grid .kpi-stat-card:nth-child(2) { animation-delay: 0.1s; }
+.dashboard-stats-grid .kpi-stat-card:nth-child(3) { animation-delay: 0.15s; }
+.dashboard-stats-grid .kpi-stat-card:nth-child(4) { animation-delay: 0.2s; }
+.dashboard-stats-grid .kpi-stat-card:nth-child(5) { animation-delay: 0.25s; }
+
+.dashboard-charts-grid {
+  animation: dashboardCardIn 0.45s cubic-bezier(0.16, 1, 0.3, 1) 0.25s backwards;
+}
+
+.dashboard-tables-grid {
+  animation: dashboardCardIn 0.45s cubic-bezier(0.16, 1, 0.3, 1) 0.32s backwards;
+}
+
+/* 6. Subtle Pulse on Live Status Pills */
+@keyframes pulseDot {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 0.7;
+  }
+}
+
+.badge-active,
+.badge-confirmed,
+.badge-available {
+  position: relative;
+}
+
+/* 7. Accessibility (prefers-reduced-motion) */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .page-wrapper, 
+  .admin-viewport-content,
+  .dashboard-stats-grid .kpi-stat-card,
+  .dashboard-charts-grid,
+  .dashboard-tables-grid {
+    animation: none !important;
+  }
+}
